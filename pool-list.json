@@ -1,0 +1,52 @@
+[
+    {
+        "parent_id": "2179",
+        "parent_name": "Piscine RoR",
+        "children_ids": ["2180", "2181", "2183", "2183", "2184", "2185", "2186", "2187"]
+    },
+    {
+        "parent_id": "2267",
+        "parent_name": "Python for Data Science",
+        "children_ids": ["2268", "2269", "2270", "2271", "2272"]
+    },
+    {
+        "parent_id": "2295",
+        "parent_name": "Piscine Data Science",
+        "children_ids": ["2306", "2318", "2311", "2316", "2317"]
+    },
+    {
+        "parent_id": "2346",
+        "parent_name": "Cybersecurity",
+        "children_ids": ["2326", "2327", "2328", "2336", "2337", "2343", "2345"]
+    },
+    {
+        "parent_id": "2364",
+        "parent_name": "Piscine Object",
+        "children_ids": ["2365", "2366", "2367", "2368", "2369", "2370"]
+    },
+    {
+        "parent_id": "2228",
+        "parent_name": "Piscine ocaml",
+        "children_ids": ["2230", "2234", "2237", "2251", "2252", "2279", "2280", "2281", "2282"]
+    },
+    {
+        "parent_id": "2288",
+        "parent_name": "Unity",
+        "children_ids": ["2286", "2284", "2289", "2290", "2292", "2287", "2285"]
+    },
+    {
+        "parent_id": "2355",
+        "parent_name": "Mobile",
+        "children_ids": ["2354", "2356", "2357", "2358", "2359", "2360"]
+    },
+    {
+        "parent_id": "2199",
+        "parent_name": "Piscine Symfony",
+        "children_ids": ["2200", "2201", "2202", "2203", "2204", "2205", "2206", "2207", "2208"]
+    },
+    {
+        "parent_id": "2189",
+        "parent_name": "Piscine Django",
+        "children_ids": ["2190", "2191", "2192", "2193", "2194", "2195", "2196", "2197", "2198"]
+    }
+  ]
