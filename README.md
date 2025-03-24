@@ -7,16 +7,16 @@ A Golang script that automaticaly grade a post CC Pool project, based on their s
 3. go run main.go <userID> <poolModuleID>
 
 ## What will happen
-Based on the module id you provide, dead-pool will find the parent project.
-After that, it will check that all piscine module are validated (green in intranet), and will calculate the final_mark for the parent project. (Average of all childrens)
+Based on the module id you provide, dead-pool will find the parent project.  
+After that, it will check that all piscine module are validated (green in intranet), and will calculate the final_mark for the parent project. (Average of all childrens)  
 If the final_mark is higher than the current parent project's mark, it will apply the mark to the latest team of the user, and to the projects_users object.
 
 ## When to use
-This script is meant to be used by Captain-hook, when any pool project is validated.
-The poolModuleID is validated by dead-pool, so you can call dead-pool on any validated project if you are lazy.
-Only modules listed in pool-list.json will work.
+This script is meant to be used by Captain-hook, when any pool project is validated.  
+The poolModuleID is validated by dead-pool, so you can call dead-pool on any validated project if you are lazy.  
+Only modules listed in pool-list.json will work.  
 
 ## How to maintain
-Since 42 API is not complete, we have no way to know which pool project is related to which parent project.
-You can read and edit file pool-list.json, that is used to link projects together.
-If 42 Central update a Pool, adding, or removing a module from it, you must come to this file, and add the new projectID in the list.
+Since 42 API is not complete, we have no way to know which pool project is related to which parent project.  
+You can read and edit file pool-list.json, that is used to link projects together.  
+If 42 Central update a Pool, adding, or removing a module from it, you must come to this file, and add the new projectID in the list.  
