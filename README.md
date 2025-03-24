@@ -4,7 +4,7 @@ A Golang script that automaticaly grade a post CC Pool project, based on their s
 ## How to use
 1. git clone ssh://git@gitlab.42nice.fr:4222/42nice/dead-pool.git
 2. edit main.go, to setup your API Keys. Your application must have [public, projects] scopes and [Basic Tutor, Advanced Tutor, Basic Staff, Advanced Staff] as roles
-3. go run main.go <userID> <poolModuleID>
+3. go run main.go \<userID\> \<poolModuleID\>
 
 ## What will happen
 Based on the module id you provide, dead-pool will find the parent project.  
