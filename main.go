@@ -12,8 +12,8 @@ import (
 	"dead-pool/poolmanager"
 )
 
-var clientID = "u-s4t2af-c1e27da8b90b444dd980d733a666bef6eacb4ffaaaf2eff1aae206d2077d1558"
-var clientSecret = "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"
+var clientID = ""
+var clientSecret = ""
 
 type APIProject struct {
 	TeamId    int    `json:"id"`
