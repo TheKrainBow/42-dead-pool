@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"os"
 	"time"
@@ -13,8 +12,8 @@ import (
 	"dead-pool/poolmanager"
 )
 
-var clientID = ""
-var clientSecret = ""
+var clientID = "u-s4t2af-c1e27da8b90b444dd980d733a666bef6eacb4ffaaaf2eff1aae206d2077d1558"
+var clientSecret = "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"
 
 type APIProject struct {
 	TeamId    int    `json:"id"`
@@ -197,51 +196,56 @@ func calculateParentMark(userID, parentID, accessToken string) (mark int, err er
 	return mark, nil
 }
 
-func main() {
-	if len(os.Args) < 3 {
-		fmt.Println("Usage: program <userID> <projectID>")
-		os.Exit(1)
-	}
-
+func UpdatePoolParentProject(userID string, moduleID string) (err error) {
 	// Load the configuration from the file
-	err := poolmanager.LoadConfig("pool-list.json")
+	err = poolmanager.LoadConfig("pool-list.json")
 	if err != nil {
-		log.Fatalf("Error reading config file: %v", err)
+		return fmt.Errorf("error reading config file: %w", err)
 	}
 
-	userID := os.Args[1]
-	parentID := poolmanager.GetProjectParentID(os.Args[2])
-
+	parentID := poolmanager.GetProjectParentID(moduleID)
 	if parentID == "" {
-		fmt.Println("Invalid ProjectID provided:", os.Args[2], "is not a known pool module.")
-		os.Exit(1)
+		return fmt.Errorf("invalid ProjectID provided (%s) is not a known pool module", moduleID)
 	}
 
 	accessToken, err := getAccessToken()
 	if err != nil {
-		fmt.Println("error getting access token:", err)
-		os.Exit(1)
+		return fmt.Errorf("error getting access token: %w", err)
 	}
 
 	mark, err := calculateParentMark(userID, parentID, accessToken)
 	if err != nil {
-		fmt.Println("error calculating final mark:", err)
-		os.Exit(1)
+		return fmt.Errorf("error calculating final mark: %w", err)
 	}
 
 	parent, err := fetchProject(userID, parentID, accessToken)
 	if err != nil {
-		fmt.Println("error fetching data:", err)
-		os.Exit(1)
+		return fmt.Errorf("error fetching data: %w", err)
 	}
 
 	if parent.FinalMark > mark {
-		fmt.Printf("Current mark for parent (%d) is higher than new mark (%d), update aborted\n", parent.FinalMark, mark)
-		os.Exit(1)
+		return fmt.Errorf("current mark for parent (%d) is higher than new mark (%d)", parent.FinalMark, mark)
 	}
 	err = updateProjectTeamMark(parent.TeamId, parent.Users[0].ProjectsUserId, mark, accessToken)
 	if err != nil {
-		fmt.Println("Error updating data:", err)
-		os.Exit(1)
+		return fmt.Errorf("error updating data: %w", err)
+	}
+	fmt.Printf("Succesfully updated team %d's mark to %d.\n", parent.TeamId, mark)
+	return nil
+}
+
+func main() {
+	if len(os.Args) < 3 {
+		fmt.Println("Usage: program <userID> <projectID>")
+		return
+	}
+	if clientID == "" || clientSecret == "" {
+		fmt.Println("You must provide a clientID and a clientSecret.")
+		return
+	}
+
+	err := UpdatePoolParentProject(os.Args[1], os.Args[2])
+	if err != nil {
+		fmt.Println("Update aborted: %w", err.Error())
 	}
 }
