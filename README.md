@@ -11,17 +11,19 @@ Based on the module id you provide, dead-pool will find the parent project.
 After that, it will check that all piscine module are validated (green in intranet), and will calculate the final_mark for the parent project. (Average of all childrens)  
 If the final_mark is higher than the current parent project's mark, it will apply the mark to the latest team of the user, and to the projects_users object.
 
-## When to use
-This script is meant to be used with any service that check 42Webhook for validated projects.  
-The poolModuleID is checked by dead-pool.  
-Any invalid ID that are not in the config will not do anything.  
-You can use it by your own, if you don't have services that check webhooks.  
+## Usage
+
+This script is designed to be used with services that check **42Webhooks** for validated projects.
+
+* The `poolModuleID` variable is checked by the `dead-pool` script.
+* Any invalid IDs not found in the configuration (`pool-list.json`) file will be ignored by the script.
+* Alternatively, you can run this script **independently** (on its own) if you do not have services that check webhooks. 
 
 ## How to maintain
 Since the relationship between parent projects and child projects are not handled by the API, we have no way to know which pool project is related to which parent project.  
-You can read and edit file pool-list.json, that is used to link projects together.  
+You can read and edit file (`pool-list.json`), that is used to link projects together.  
 If 42World update a Pool, adding, or removing a module from it, you must come to this file, and add the new projectID in the list.  
-The list provided in pool-list.json is the valid for 42Nice, the 28th April 2025.  
+The list provided in (`pool-list.json`) is the valid for 42Nice, the 28th April 2025.  
 
 ## Conditions of Use
 
