@@ -14,8 +14,8 @@ import (
 	"dead-pool/poolmanager"
 )
 
-var clientID = ""
-var clientSecret = ""
+var clientID string
+var clientSecret string
 var logFile *os.File
 var level log.Level = log.InfoLevel
 

@@ -31,9 +31,12 @@ func LoadConfig(filename string) error {
 	return nil
 }
 
+/*
+Returns the ID from the parent project if the provided ID is a children. If it's already a parent ID, returns it
+*/
 func GetProjectParentID(childrenID string) (parentID string) {
 	for _, parent := range Pools {
-		if slices.Contains(parent.ChildrenIDs, childrenID) {
+		if slices.Contains(parent.ChildrenIDs, childrenID) || parent.ParentID == childrenID {
 			return parent.ParentID
 		}
 	}
