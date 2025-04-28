@@ -9,6 +9,7 @@ import (
 
 var clientID = ""
 var clientSecret = ""
+var pathToLogs = "./dead-pool.log"
 
 func main() {
 	if len(os.Args) < 3 {
@@ -16,7 +17,7 @@ func main() {
 		return
 	}
 
-	deadpool.Init(clientID, clientSecret, "./dead-pool.log")
+	deadpool.Init(clientID, clientSecret, pathToLogs)
 	deadpool.CheckPoolProject(os.Args[1], os.Args[2])
 	deadpool.CloseLogs()
 }
