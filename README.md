@@ -2,7 +2,7 @@
 A Golang script that automaticaly grade a post CC Pool project, based on their sub-modules marks.
 
 ## How to use
-1. git clone [https://github.com/TheKrainBow/42-dead-pool.git](https://github.com/TheKrainBow/42-dead-pool.git)
+1. git clone [ssh://git@gitlab.42nice.fr:4222/42nice/dead-pool.git](ssh://git@gitlab.42nice.fr:4222/42nice/dead-pool.git)
 2. edit main.go, to setup your API Keys. Your application must have [public, projects] scopes and [Basic Tutor, Advanced Tutor, Basic Staff, Advanced Staff] as roles
 3. go run main.go \<userID\> \<poolModuleID\>
 
